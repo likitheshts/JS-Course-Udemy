@@ -43,3 +43,6 @@ const arr2 = [1, 2, ...arr1];
 
 const [a, b, ...others] = [1, 2, 3, 4, 5];
 console.log(a, b, others);
+
+const orders = new Set(['pasta', 'hello', 'hello']);
+console.log(orders);
