@@ -80,6 +80,12 @@ const displaymovements = function (movements) {
 
 displaymovements(account1.movements);
 
+const calaprintbalance = function (mov) {
+  const balance = mov.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}EUR`;
+};
+calaprintbalance(account1.movements);
+
 const createusername = function (acc) {
   acc.forEach(user => {
     acc.username = user.owner
@@ -90,23 +96,16 @@ const createusername = function (acc) {
     console.log(acc.username.toUpperCase());
   });
 };
+createusername(accounts);
 
-const deposit = movements.filter(function (mov) {
-  return mov > 0;
-});
-console.log(deposit);
-
-const withdrawals=movements.filter(mov => mov<0)
-console.log(withdrawals);
-
-
-
-
-
-
-
-
-
+const calacaverageage = function (ages) {
+  let humanage = ages.map(age => (age <= 2 ? 2 * age : 16 + 4 * age));
+  const adultas = humanage.filter(age => age >= 18);
+  const avg = adultas.reduce((acc, age) => (acc + age) / adultas.length, 0);
+  return avg;
+};
+const hell = calacaverageage([1, 2, 8, 52, 12, 1, 69, 20, 18, 17]);
+console.log(hell);
 /*
 let Julia = [3, 5, 2, 12, 7];
 let Kate = [4, 1, 15, 8, 3];
