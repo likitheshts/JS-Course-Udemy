@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const movements = [200, -200, 340, -300, -20, 50, 400, -460];
+
 const displaymovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -77,6 +79,33 @@ const displaymovements = function (movements) {
 };
 
 displaymovements(account1.movements);
+
+const createusername = function (acc) {
+  acc.forEach(user => {
+    acc.username = user.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
+    console.log(acc.username.toUpperCase());
+  });
+};
+
+const deposit = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposit);
+
+const withdrawals=movements.filter(mov => mov<0)
+console.log(withdrawals);
+
+
+
+
+
+
+
+
 
 /*
 let Julia = [3, 5, 2, 12, 7];
