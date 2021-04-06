@@ -83,20 +83,20 @@ const calaprintbalance = function (mov) {
   labelBalance.textContent = `${balance}EUR`;
 };
 
-const calcdisplaysummary = function (movements) {
-  const incomes = movements
+const calcdisplaysummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter(int => int >= 1)
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${Math.abs(interest)}€`;
@@ -133,7 +133,7 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     displaymovements(currentAccount.movements);
     calaprintbalance(currentAccount.movements);
-    calcdisplaysummary(currentAccount.movements);
+    calcdisplaysummary(currentAccount);
   }
 });
 
