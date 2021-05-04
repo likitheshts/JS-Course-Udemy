@@ -32,6 +32,7 @@ const getcountry = function (countryname) {
 };
 getcountry('usa');
 */
+
 const rendercountry = function (data, classname = '') {
   const html = `<article class="country ${classname}">
           <img class="country__img" src="${data.flag}" />
@@ -50,7 +51,7 @@ const rendercountry = function (data, classname = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
-
+/*
 const getcountrynb = function (countryname) {
   const request = new XMLHttpRequest();
   request.open('GET', `https://restcountries.eu/rest/v2/name/${countryname}`);
@@ -72,7 +73,7 @@ const getcountrynb = function (countryname) {
   });
 };
 getcountrynb('usa');
-
+*/
 const p = fetch('https://restcountries.eu/rest/v2/name/portugual');
 console.log(p);
 
@@ -86,4 +87,6 @@ const fetd = function (cou) {
       console.log(data);
     });
 };
-fetd('portugal');
+btn.addEventListener('click', function () {
+  fetd('portugal');
+});
