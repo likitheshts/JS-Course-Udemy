@@ -90,3 +90,10 @@ const fetd = function (cou) {
 btn.addEventListener('click', function () {
   fetd('portugal');
 });
+
+const res = async function (country) {
+  const r = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  const s = await r.json();
+  rendercountry('s[0]');
+};
+res('usa');
