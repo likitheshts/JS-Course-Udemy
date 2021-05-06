@@ -1,3 +1,1 @@
-import { addtocart } from './shoppingcart.js';
-console.log('importing module');
-addtocart('breads', 5);
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
