@@ -1,4 +1,4 @@
-var budget = [
+var budget = Object.freeze([
   { value: 250, description: 'Sold old TV 📺', user: 'jonas' },
   { value: -45, description: 'Groceries 🥑', user: 'jonas' },
   { value: 3500, description: 'Monthly salary 👩‍💻', user: 'jonas' },
@@ -7,12 +7,14 @@ var budget = [
   { value: -20, description: 'Candy 🍭', user: 'matilda' },
   { value: -125, description: 'Toys 🚂', user: 'matilda' },
   { value: -1800, description: 'New Laptop 💻', user: 'jonas' },
-];
+]);
 
-var limits = {
+var limits = Object.freeze({
   jonas: 1500,
   matilda: 100,
-};
+});
+limits.a = 200;
+console.log(limits);
 
 var add = function (value, description, user) {
   if (!user) user = 'jonas';
@@ -26,7 +28,7 @@ var add = function (value, description, user) {
   }
 
   if (value <= lim) {
-    budget.push({ value: -value, description: description, user: user });
+    return [{ value: -value, description, user }];
   }
 };
 add(10, 'Pizza 🍕');
